@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Inline Translator + Wordbook",
+  "version": "0.4",
+  "description": "Ctrl+T translate selection; Add to wordbook; Ctrl+E export CSV for Anki",
+  "permissions": [
+    "storage",
+    "downloads",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Inline Translator Settings"
+  }
+
+}
